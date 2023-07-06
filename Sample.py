@@ -9,7 +9,8 @@ from langchain.chat_models import ChatOpenAI
 # openai 0.27.6
 # langchain 0.0.158
 
-# APIKeyは環境変数OPENAI_API_KEYにセットしておく
+# 前提!
+# 環境変数OPENAI_API_KEYにAPIKeyをセットしておく
 
 # インプットとなるcsvを用意する
 csvfile = Path('D:\Work\Projects\ChatGPT\sample.csv')
@@ -31,6 +32,8 @@ index = GPTVectorStoreIndex.from_documents(
 )
 
 query_engine = index.as_query_engine()
+
 # 質問を入力する
-comment = query_engine.query("chatABCの特徴は？")
-print(comment)
+question = input("質問を入力してください: ")
+answer = query_engine.query(question)
+print(answer)
